@@ -1,8 +1,10 @@
+package enums;
+
 public enum MembershipType {
 
     BRONZE(0),
     SILVER(0.5),
-    GOLD(0.10) ;
+    GOLD(0.10);
 
     private double waiverRate;
 

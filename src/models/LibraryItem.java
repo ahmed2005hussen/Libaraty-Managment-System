@@ -1,10 +1,8 @@
-public abstract class LibraryItem {
-    //• Catalogue ID
-    //• Title
-    //• Current status
-    //• Borrower Member ID
-    //• Number of renewals used
+package models;
 
+import enums.ItemStatus;
+
+public abstract class LibraryItem {
     private final long catalogueID;
     private String title;
     private ItemStatus itemStatus;
