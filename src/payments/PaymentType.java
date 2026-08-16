@@ -10,4 +10,12 @@ public enum PaymentType {
             case WALLET -> new Wallet();
         };
     }
+    public static PaymentType getPaymentTypeById(int id) {
+        return switch (id) {
+            case 1 -> VISA;
+            case 2 -> WALLET;
+            default -> null;
+        };
+    }
+
 }

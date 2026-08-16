@@ -65,7 +65,7 @@ public class Member {
     public void makePayment(double amount, PaymentType paymentType) {
 
         if (amount <= 0) {
-            System.out.println("Invalid amount");
+            System.out.println("Invalid amount, can't be negative");
             return;
         }
 
@@ -96,14 +96,7 @@ public class Member {
     }
 
     public void borrowing(LibraryItem libraryItem) {
-
-        if (!canBorrow()) {
-            System.out.println("You can not borrow");
-            return;
-        }
-
         heldItems.add(libraryItem);
-        System.out.println("Added ");
     }
 
     public boolean returnBorrowing(LibraryItem libraryItem) {
@@ -113,7 +106,6 @@ public class Member {
         }
 
         heldItems.remove(libraryItem);
-        System.out.println("Removed");
         return true;
     }
 
