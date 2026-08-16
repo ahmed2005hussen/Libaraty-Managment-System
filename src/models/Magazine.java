@@ -4,10 +4,10 @@ import interfaces.Renewable;
 
 public class Magazine extends LibraryItem implements Renewable {
 
-    private int issueNumber ;
+    private int issueNumber;
 
-    public Magazine(String title , int issueNumber) {
-        super(2, title, 1 , 7 , 3.0);
+    public Magazine(String title, int issueNumber) {
+        super(2, title, 1, 7, 3.0);
 
         this.issueNumber = issueNumber;
     }
@@ -27,7 +27,7 @@ public class Magazine extends LibraryItem implements Renewable {
 
     @Override
     public String toString() {
-        return "   \nIssue Number: " + issueNumber ;
+        return super.toString() + "   \nIssue Number: " + issueNumber;
     }
 
     @Override
@@ -44,4 +44,6 @@ public class Magazine extends LibraryItem implements Renewable {
     public int renewLimit() {
         return getLimitRenwal();
     }
+
+
 }

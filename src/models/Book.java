@@ -55,7 +55,7 @@ public class Book extends LibraryItem implements Renewable {
 
     @Override
     public String toString() {
-        return
+        return super.toString() +
                 "   \nAuthor: " + author + '\n' +
                 "   page Count:" + pageCount;
     }

@@ -23,6 +23,6 @@ public class DVD extends LibraryItem {
 
     @Override
     public String toString() {
-        return "    \nRuntime: " + runtime ;
+        return super.toString()+ "    \nRuntime: " + runtime ;
     }
 }
