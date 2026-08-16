@@ -49,7 +49,6 @@ public abstract class LibraryItem {
         }
     }
 
-
     public boolean isBorrowed() {
         return itemStatus.equals(ItemStatus.ON_LOAN);
     }

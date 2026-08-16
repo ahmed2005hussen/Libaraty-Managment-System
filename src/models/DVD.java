@@ -4,7 +4,7 @@ public class DVD extends LibraryItem {
 
     private double runtime;
     public DVD(String title , double runtime) {
-        super(1, title, 0 , 3 , 15.0);
+        super(3, title, 0 , 3 , 15.0);
         this.runtime = runtime;
     }
 
