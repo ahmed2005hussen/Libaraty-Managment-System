@@ -1,14 +1,19 @@
 import enums.ItemStatus;
 import enums.MembershipType;
-import models.Library;
-import models.LibraryItem;
-import models.Member;
+import models.*;
 import payments.PaymentType;
 
 import java.util.Scanner;
 
 class Main {
     Library library = new Library();
+
+
+    {
+        library.addItem(new Book("Clean Code", "Robert Martin", 464));
+        library.addItem(new Magazine("Tech Today", 25));
+        library.addItem(new DVD("Avengers", 143));
+    }
 
     Scanner sc = new Scanner(System.in);
 
@@ -65,12 +70,26 @@ class Main {
         int memberID = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Our Items: ");
-        library.showItems();
+        Member member = library.findMemberById(memberID);
 
-        System.out.print("Enter item ID");
+        if (member == null) {
+            System.out.println("This member does not exist");
+            System.out.println("-----------------------");
+            return;
+        }
+
+        System.out.print("Enter item ID: ");
         int itemId = sc.nextInt();
         sc.nextLine();
+
+        LibraryItem item = library.findItemById(itemId);
+
+        if (item == null) {
+            System.out.println("This item does not exist");
+            System.out.println("-----------------------");
+            return;
+        }
+
 
         library.borrow(memberID, itemId);
     }
@@ -165,10 +184,18 @@ class Main {
 
         System.out.print("Enter payment amount: ");
 
-        // i checked on the negative amount inside the makePayment function :)
-
         double amount = sc.nextDouble();
         sc.nextLine();
+
+        if (amount <= 0) {
+            System.out.println("Invalid amount");
+            return;
+        }
+
+        if (amount > member.getBalanceOwed()) {
+            System.out.println("Too much payment");
+            return;
+        }
 
         System.out.println("1. VISA");
         System.out.println("2. WALLET");
@@ -183,8 +210,20 @@ class Main {
             System.out.println("Invalid payment type.");
             return;
         }
+        String paymentDetails;
 
-        member.makePayment(amount, paymentType);
+        if (paymentType == PaymentType.VISA) {
+
+            System.out.print("Enter your 14 digit Visa number: ");
+            paymentDetails = sc.nextLine();
+
+        } else {
+
+            System.out.print("Enter your 11 digit Wallet number: ");
+            paymentDetails = sc.nextLine();
+        }
+
+        member.makePayment(amount, paymentType,paymentDetails);
     }
 
     void markItemAsLost() {

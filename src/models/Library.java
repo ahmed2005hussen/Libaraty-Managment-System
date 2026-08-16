@@ -272,6 +272,12 @@ public class Library {
         System.out.println("---------------------------");
     }
 
+
+    public void addItem(LibraryItem item) {
+        libraryItems.add(item);
+    }
+
+
     public static String getLibararyName() {
         return libararyName;
     }

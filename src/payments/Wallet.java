@@ -1,19 +1,22 @@
 package payments;
 
-import java.util.Scanner;
 
 public class Wallet implements PaymentStrategy {
-    private Scanner sc = new Scanner(System.in);
-    private boolean details(){
-        System.out.println("Enter the your number: ");
-        String visa = sc.next();
 
-        if(visa.length() != 11){
+    private final String walletNumber;
+
+    public Wallet(String walletNumber) {
+        this.walletNumber = walletNumber;
+    }
+
+    private boolean details() {
+
+        if (walletNumber.length() != 11) {
             System.out.println("Invalid Number, should be 11 numbers");
             return false;
         }
 
-        if(!visa.matches("\\d+")){
+        if (!walletNumber.matches("\\d+")) {
             System.out.println("Invalid Number, should be digits only ");
             return false;
         }

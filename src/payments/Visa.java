@@ -1,19 +1,21 @@
 package payments;
 
-import java.util.Scanner;
-
 public class Visa implements PaymentStrategy {
-    private Scanner sc = new Scanner(System.in);
-    private boolean details(){
-        System.out.println("Enter the 14 number of your visa: ");
-        String visa = sc.next();
 
-        if(visa.length() != 14){
+    private final String visaNumber;
+
+    public Visa(String visaNumber) {
+        this.visaNumber = visaNumber;
+    }
+
+    private boolean details() {
+
+        if (visaNumber.length() != 14) {
             System.out.println("Invalid Number, should be 14 numbers");
             return false;
         }
 
-        if(!visa.matches("\\d+")){
+        if (!visaNumber.matches("\\d+")) {
             System.out.println("Invalid Number, should be digits only ");
             return false;
         }

@@ -8,6 +8,7 @@ import payments.PaymentType;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Member {
 
@@ -62,7 +63,7 @@ public class Member {
         return true;
     }
 
-    public void makePayment(double amount, PaymentType paymentType) {
+    public void makePayment(double amount, PaymentType paymentType ,  String paymentDetails) {
 
         if (amount <= 0) {
             System.out.println("Invalid amount, can't be negative");
@@ -74,7 +75,7 @@ public class Member {
             return;
         }
 
-        Payment payment = new Payment(paymentType.createStrategy());
+        Payment payment = new Payment(paymentType.createStrategy(paymentDetails));
         boolean isPay = payment.pay(amount);
 
         if (isPay) {
@@ -84,6 +85,9 @@ public class Member {
                     LocalDate.now(), paymentType.toString());
 
         }
+
+        System.out.println("Your Invoices: " + invoice);
+
 
     }
 
